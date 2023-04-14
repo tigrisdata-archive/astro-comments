@@ -1,0 +1,57 @@
+---
+import { useTigrisCollection } from "@tigrisdata/astro";
+import type { Comment } from "../types/comment";
+import NewComment from "./NewComment.astro";
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const commentCollection = await useTigrisCollection<Comment>("comments");
+const postCommentsCursor = await commentCollection.findMany({
+  filter: { slug },
+  sort: [{ field: "createdAt", order: "$desc" }],
+});
+
+const comments = await postCommentsCursor.toArray();
+---
+
+<section id="comments" class="comments">
+  <h2>Comments</h2>
+  <NewComment slug={slug} />
+  {
+    comments.map((comment) => {
+      return (
+        <div class="comment" id={`comment${comment.id}`}>
+          <p>{comment.message}</p>
+          <h4>{comment.name}</h4>
+          <time>{new Date(comment.createdAt).toLocaleString()}</time>
+        </div>
+      );
+    })
+  }
+
+  <style>
+    #comments {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comment {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      border-bottom: 1px #999 dashed;
+    }
+    .comment h4 {
+      margin: 0;
+      font-size: 0.8rem;
+    }
+    .comment time {
+      font-size: 0.6rem;
+      color: #999;
+    }
+  </style>
+</section>

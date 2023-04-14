@@ -1,0 +1,41 @@
+---
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<div id="newComment">
+  <form method="get" action="/api/newcomment">
+    <h4>Leave a Comment</h4>
+    <p>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+    </p>
+
+    <p>
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="5"></textarea>
+    </p>
+
+    <input type="hidden" name="slug" value={slug} />
+    <input type="submit" value="Send comment" />
+  </form>
+</div>
+
+<style>
+  #newComment {
+    margin-bottom: 2rem;
+    padding: 0 2rem 2rem 2rem;
+    background-color: #f5f5f5;
+    border: 1px solid #999;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-weight: bold;
+  }
+</style>
