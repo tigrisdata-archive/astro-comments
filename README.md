@@ -47,7 +47,8 @@ export default defineConfig({
 ### Creating a Tigris Collection
 
 To initialize the collection in your Tigris project, update the following
-parameters with your Tigris project, client ID, and client secret.
+parameters in the `setup.ts` file with your Tigris project, client ID, and
+client secret.
 
 ```ts
 // setup client
