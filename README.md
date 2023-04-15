@@ -46,11 +46,24 @@ export default defineConfig({
 
 ### Creating a Tigris Collection
 
-Within your Tigris project, create a new collection named `comments` with the following schema:
+To initialize the collection in your Tigris project, update the following
+parameters with your Tigris project, client ID, and client secret.
 
-![image](https://user-images.githubusercontent.com/1228996/232150889-1864522d-16dc-4948-9b24-f79d86fe7dba.png)
+```ts
+// setup client
+const tigrisClient = new Tigris({
+  branch: "main",
+  projectName: "YOUR_TIGRIS_PROJECT_NAME",
+  clientId: "YOUR_TIGRIS_CLIENT_ID",
+  clientSecret: "YOUR_TIGRIS_CLIENT_SECRET",
+});
+```
 
-Of course, if you want to modify this for your own use, you can change the schema to whatever you'd like. Just be sure to update the `Comments` and `NewComment` components and `newcomment.ts` function to match.
+Then run the following command to set up the collection and schema:
+
+```bash
+npm run setup
+```
 
 ### Run It!
 

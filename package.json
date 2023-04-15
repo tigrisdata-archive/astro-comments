@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "setup": "npx ts-node ./setup.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.0",
