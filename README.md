@@ -1,3 +1,8 @@
+> ⚠️ **This repository is archived.**
+>
+> Tigris has pivoted from this database project to a new, globally distributed S3-compatible object storage service.
+> Learn more about the new product here: https://www.tigrisdata.com/
+
 # Astro Starter Kit: Blog + Comments
 
 Adding comments to your blog is a great way to engage with your readers. This repo contains the base Astro starter kit blog template with a few extra features:
